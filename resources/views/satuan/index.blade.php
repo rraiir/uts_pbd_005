@@ -7,9 +7,9 @@
 <tr><th>ID</th><th>Nama Satuan</th><th>Status</th></tr>
 @foreach ($satuan as $row)
 <tr></tr>
-<td>{{ $row->idsatuan }}</td>
-<td>{{ $row->nama_satuan }}</td>
-<td>{{ $row->status }}</td>
+    <td>{{ $row->idsatuan }}</td>
+    <td>{{ $row->nama_satuan }}</td>
+    <td>{{ $row->status }}</td>
 </tr>
 @endforeach
 </table>
