@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="id" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "secondary-fixed-dim": "#cfbef3", "on-tertiary": "#ffffff", "surface-dim": "#e0d7e4", "surface-variant": "#e9dfed", "surface": "#fff7ff", "surface-container-lowest": "#ffffff", "primary-fixed": "#ffd9e0", "on-secondary-fixed": "#20133d", "inverse-on-surface": "#f7edfb", "on-tertiary-fixed-variant": "#294e40", "on-tertiary-container": "#274c3f", "on-primary": "#ffffff", "on-error-container": "#93000a", "surface-container-high": "#efe5f3", "on-primary-fixed-variant": "#613c45", "secondary-container": "#dbc9fe", "surface-bright": "#fff7ff", "on-tertiary-fixed": "#002117", "surface-container-highest": "#e9dfed", "on-secondary-container": "#605280", "surface-container": "#f5ebf8", "on-primary-container": "#603b44", "secondary": "#655785", "primary": "#7b535c", "error": "#ba1a1a", "secondary-fixed": "#eaddff", "on-background": "#1e1a23", "inverse-surface": "#342e39", "tertiary": "#406658", "on-surface": "#1e1a23", "background": "#fff7ff", "tertiary-fixed": "#c2ecd9", "outline": "#827476", "surface-tint": "#7b535c", "tertiary-container": "#94bcab", "on-secondary": "#ffffff", "error-container": "#ffdad6", "on-secondary-fixed-variant": "#4d3f6b", "primary-fixed-dim": "#ecb9c4", "on-primary-fixed": "#2f121a", "outline-variant": "#d4c2c5", "on-surface-variant": "#504446", "tertiary-fixed-dim": "#a7cfbe", "primary-container": "#d8a7b1", "surface-container-low": "#faf0fe", "inverse-primary": "#ecb9c4", "on-error": "#ffffff" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-lg": "1.5rem", "space-md": "1rem", "margin": "3rem", "space-xs": "0.5rem", "space-xl": "3rem", "gutter": "1.5rem", "space-sm": "0.75rem" }, "fontFamily": { "caption": ["Inter"], "section-title": ["Inter"], "badge": ["Inter"], "login-headline": ["Inter"], "page-title": ["Inter"], "card-title": ["Inter"], "body-small": ["Inter"], "body": ["Inter"] }, "fontSize": { "caption": ["12px", { "lineHeight": "16.8px", "fontWeight": "500" }], "section-title": ["28px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "badge": ["12px", { "lineHeight": "16.8px", "fontWeight": "500" }], "login-headline": ["72px", { "lineHeight": "100px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "page-title": ["40px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "card-title": ["20px", { "lineHeight": "28px", "fontWeight": "600" }], "body-small": ["14px", { "lineHeight": "19.6px", "fontWeight": "400" }], "body": ["16px", { "lineHeight": "22.4px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface-container-lowest font-body text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 h-[72px] z-50 bg-surface-container-lowest border-b border-surface-container-highest px-12 flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-secondary-fixed flex items-center justify-center text-primary"><span class="material-symbols-outlined text-[22px]">local_florist</span></div><span class="font-page-title text-card-title text-on-surface tracking-tight">StokKu</span></div><div class="flex items-center gap-space-md"><div class="flex items-center gap-space-xs"><div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed"><span class="material-symbols-outlined text-[18px]">person</span></div><span class="font-body-small text-body-small text-on-surface font-medium">admin</span></div><button class="h-10 px-space-md rounded-[14px] border border-surface-container-highest bg-surface-container-lowest text-on-surface font-body-small text-body-small font-medium hover:bg-surface-container-low transition-colors flex items-center gap-space-xs" type="button"><span class="material-symbols-outlined text-[18px]">logout</span><span class="">Keluar</span></button></div></header><aside class="fixed left-0 top-[72px] bottom-0 w-[260px] bg-surface-container-lowest border-r border-surface-container-highest py-6 px-4 z-40 overflow-y-auto"><nav class="flex flex-col gap-1.5" data-active-classes="bg-secondary-fixed text-on-secondary-fixed font-semibold"><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">dashboard</span><span class="">Dashboard</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="satuan" href="#"><span class="material-symbols-outlined text-[20px]">straighten</span><span class="">Satuan</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm bg-secondary-fixed text-on-secondary-fixed font-semibold font-body-small text-body-small transition-colors" data-path="barang" href="#"><span class="material-symbols-outlined text-[20px] text-[#4d3f6b]">inventory_2</span><span class="">Barang</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="vendor" href="#"><span class="material-symbols-outlined text-[20px]">storefront</span><span class="">Vendor</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="user" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="">User</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="role" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span><span class="">Role</span></a><a class="h-12 px-4 rounded-[14px] flex items-center gap-space-sm text-on-surface font-body-small text-body-small hover:bg-surface-container-low hover:text-on-surface transition-colors" data-path="margin-penjualan" href="#"><span class="material-symbols-outlined text-[20px]">percent</span><span class="">Margin Penjualan</span></a></nav></aside><div class="pl-[260px]"><main class="min-h-screen pt-[72px] bg-surface-container-lowest p-margin max-w-[1440px]"><div class="flex flex-col w-full relative">
+<!-- Decorative subtle background shapes strictly in corner margins -->
+<div class="absolute -top-6 -right-6 w-40 h-40 rounded-full bg-secondary-fixed/40 blur-2xl pointer-events-none -z-10"></div>
+<div class="absolute top-96 -left-10 w-48 h-48 rounded-full bg-primary-fixed/30 blur-3xl pointer-events-none -z-10"></div>
+<!-- Page Header -->
+<header class="flex flex-col gap-3 pt-8 mb-5">
+  <div class="flex items-center gap-3.5 flex-wrap">
+    <h1 class="font-page-title text-page-title text-on-surface leading-none tracking-tight">Kelola</h1>
+    <span class="inline-flex items-center justify-center bg-[#EDE7FA] text-[#4d3f6b] font-page-title text-page-title px-4 py-1.5 rounded-[12px] border border-[#C9B8EC]/40 leading-none shadow-sm">Barang</span>
+  </div>
+  <p class="font-body text-body text-on-surface-variant">Atur katalog dan master data inventaris barang gudang StokKu secara terpadu.</p>
+</header>
+<!-- Two-Column Workspace Layout -->
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Left Column: Data Table & Toolbar (7 of 12 columns) -->
+<section class="col-span-12 xl:col-span-7 flex flex-col gap-space-md">
+<!-- Action Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm flex-1 min-w-[280px]">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px] pointer-events-none">search</span>
+<input class="w-full h-12 pl-11 pr-4 rounded-[12px] bg-surface-container-lowest text-on-surface font-body-small text-body-small shadow-sm outline-none transition-all placeholder:text-on-surface-variant focus:shadow-md" id="searchInput" placeholder="Cari nama barang" type="text">
+</div>
+<span class="inline-flex items-center px-3.5 h-8 rounded-full bg-[#EDE7FA] text-[#4d3f6b] border border-[#C9B8EC]/30 font-badge text-badge whitespace-nowrap font-medium">Total: 5 Barang</span>
+</div>
+<button class="h-12 px-space-lg rounded-[14px] bg-primary-container text-on-surface font-card-title text-body-small font-semibold flex items-center gap-2 hover:opacity-95 shadow-sm active:scale-[0.98] transition-all cursor-pointer whitespace-nowrap" onclick="resetForm('create')" type="button">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="">Tambah Barang</span>
+</button>
+</div>
+<!-- Inventory Data Table Card -->
+<div class="w-full rounded-[20px] bg-white border border-[#E8E1EC] shadow-[0_8px_24px_rgba(43,38,48,0.06)] overflow-hidden flex flex-col">
+  <!-- Card Header Bar -->
+  <div class="h-12 px-5 bg-[#EDE7FA]/80 border-b border-[#E8E1EC] flex items-center justify-between text-caption font-semibold uppercase tracking-wider text-[#4d3f6b]">
+    <div class="flex items-center gap-6">
+      <span class="w-20">ID</span>
+      <span class="">NAMA Barang</span>
+    </div>
+    <div class="flex items-center gap-8 pr-2">
+      <span class="text-right min-w-[90px]">Harga Satuan</span>
+      <span class="text-center min-w-[70px]">Status</span>
+    </div>
+  </div>
+
+  <!-- Items List Container -->
+  <div class="divide-y divide-[#E8E1EC]/60" id="inventoryTableBody">
+    <!-- Item 1 -->
+    <div class="p-4 hover:bg-[#FAF7FE] transition-colors flex flex-col gap-3 group">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-body-small text-on-surface w-20 shrink-0">1</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#EDE7FA] text-[#4d3f6b] font-semibold text-caption border border-[#C9B8EC]/50" title="Makanan/Minuman"></span>
+          <div>
+            <p class="font-medium text-body-small text-on-surface">Wafer Cokelat</p>
+            <p class="font-caption text-caption text-on-surface-variant">Satuan: <span class="font-medium text-on-surface">PCS</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp 2.500</span>
+          <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge min-w-[70px] justify-center">Aktif</span>
+        </div>
+      </div>
+      <!-- Full-width Action Sub-bar -->
+      <div class="pt-2.5 border-t border-[#E8E1EC]/50 flex items-center justify-between bg-surface-container-low/40 -mx-4 -mb-4 px-4 py-2 mt-0.5 rounded-b-[6px]">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">inventory</span>&nbsp;</span>
+        <div class="flex items-center gap-2">
+          <button class="h-7 px-3.5 rounded-[8px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/40 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="editItem('BRG-001', 'M', 'Wafer Cokelat', 'PCS', 'Aktif', '2500')" type="button">
+            <span class="material-symbols-outlined text-[15px]">edit</span> Edit
+          </button>
+          <button class="h-7 px-3 rounded-[8px] bg-white border border-[#E8E1EC] text-error hover:bg-error-container/30 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="deleteItem('BRG-001')" type="button">
+            <span class="material-symbols-outlined text-[15px]">delete</span> Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div class="p-4 hover:bg-[#FAF7FE] transition-colors flex flex-col gap-3 group">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-body-small text-on-surface w-20 shrink-0">2</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#EDE7FA] text-[#4d3f6b] font-semibold text-caption border border-[#C9B8EC]/50" title="Makanan/Minuman"><br></span>
+          <div>
+            <p class="font-medium text-body-small text-on-surface">Kecap Manis Sachet</p>
+            <p class="font-caption text-caption text-on-surface-variant">Satuan: <span class="font-medium text-on-surface">SACHET</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp 1.500</span>
+          <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge min-w-[70px] justify-center">Aktif</span>
+        </div>
+      </div>
+      <!-- Full-width Action Sub-bar -->
+      <div class="pt-2.5 border-t border-[#E8E1EC]/50 flex items-center justify-between bg-surface-container-low/40 -mx-4 -mb-4 px-4 py-2 mt-0.5 rounded-b-[6px]">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">inventory</span>&nbsp;</span>
+        <div class="flex items-center gap-2">
+          <button class="h-7 px-3.5 rounded-[8px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/40 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="editItem('BRG-002', 'M', 'Kecap Manis Sachet', 'SACHET', 'Aktif', '1500')" type="button">
+            <span class="material-symbols-outlined text-[15px]">edit</span> Edit
+          </button>
+          <button class="h-7 px-3 rounded-[8px] bg-white border border-[#E8E1EC] text-error hover:bg-error-container/30 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="deleteItem('BRG-002')" type="button">
+            <span class="material-symbols-outlined text-[15px]">delete</span> Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div class="p-4 hover:bg-[#FAF7FE] transition-colors flex flex-col gap-3 group">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-body-small text-on-surface w-20 shrink-0">3</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold text-caption" title="Bahan Pokok"><br></span>
+          <div>
+            <p class="font-medium text-body-small text-on-surface">Gula Pasir 1kg</p>
+            <p class="font-caption text-caption text-on-surface-variant">Satuan: <span class="font-medium text-on-surface">KG</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp 16.000</span>
+          <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge min-w-[70px] justify-center">Aktif</span>
+        </div>
+      </div>
+      <!-- Full-width Action Sub-bar -->
+      <div class="pt-2.5 border-t border-[#E8E1EC]/50 flex items-center justify-between bg-surface-container-low/40 -mx-4 -mb-4 px-4 py-2 mt-0.5 rounded-b-[6px]">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">inventory</span>&nbsp;</span>
+        <div class="flex items-center gap-2">
+          <button class="h-7 px-3.5 rounded-[8px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/40 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="editItem('BRG-003', 'B', 'Gula Pasir 1kg', 'KG', 'Aktif', '16000')" type="button">
+            <span class="material-symbols-outlined text-[15px]">edit</span> Edit
+          </button>
+          <button class="h-7 px-3 rounded-[8px] bg-white border border-[#E8E1EC] text-error hover:bg-error-container/30 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="deleteItem('BRG-003')" type="button">
+            <span class="material-symbols-outlined text-[15px]">delete</span> Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 4 -->
+    <div class="p-4 hover:bg-[#FAF7FE] transition-colors flex flex-col gap-3 group">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-body-small text-on-surface w-20 shrink-0">4</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary-fixed text-on-primary-fixed font-semibold text-caption" title="Bahan Pokok"><br></span>
+          <div>
+            <p class="font-medium text-body-small text-on-surface">Minyak Goreng 2L</p>
+            <p class="font-caption text-caption text-on-surface-variant">Satuan: <span class="font-medium text-on-surface">LITER</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp 38.000</span>
+          <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge min-w-[70px] justify-center">Aktif</span>
+        </div>
+      </div>
+      <!-- Full-width Action Sub-bar -->
+      <div class="pt-2.5 border-t border-[#E8E1EC]/50 flex items-center justify-between bg-surface-container-low/40 -mx-4 -mb-4 px-4 py-2 mt-0.5 rounded-b-[6px]">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">inventory</span>&nbsp;</span>
+        <div class="flex items-center gap-2">
+          <button class="h-7 px-3.5 rounded-[8px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/40 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="editItem('BRG-004', 'B', 'Minyak Goreng 2L', 'LITER', 'Aktif', '38000')" type="button">
+            <span class="material-symbols-outlined text-[15px]">edit</span> Edit
+          </button>
+          <button class="h-7 px-3 rounded-[8px] bg-white border border-[#E8E1EC] text-error hover:bg-error-container/30 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="deleteItem('BRG-004')" type="button">
+            <span class="material-symbols-outlined text-[15px]">delete</span> Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 5 -->
+    <div class="p-4 hover:bg-[#FAF7FE] transition-colors flex flex-col gap-3 group">
+      <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="font-semibold text-body-small text-on-surface w-20 shrink-0">5</span>
+          <span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-surface-container text-on-surface font-semibold text-caption" title="Kebutuhan Rumah"><br></span>
+          <div>
+            <p class="font-medium text-body-small text-on-surface">Sabun Cuci Piring</p>
+            <p class="font-caption text-caption text-on-surface-variant">Satuan: <span class="font-medium text-on-surface">PCS</span></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp 9.000</span>
+          <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge min-w-[70px] justify-center">Aktif</span>
+        </div>
+      </div>
+      <!-- Full-width Action Sub-bar -->
+      <div class="pt-2.5 border-t border-[#E8E1EC]/50 flex items-center justify-between bg-surface-container-low/40 -mx-4 -mb-4 px-4 py-2 mt-0.5 rounded-b-[6px]">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px]">inventory</span>&nbsp;</span>
+        <div class="flex items-center gap-2">
+          <button class="h-7 px-3.5 rounded-[8px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/40 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="editItem('BRG-005', 'K', 'Sabun Cuci Piring', 'PCS', 'Aktif', '9000')" type="button">
+            <span class="material-symbols-outlined text-[15px]">edit</span> Edit
+          </button>
+          <button class="h-7 px-3 rounded-[8px] bg-white border border-[#E8E1EC] text-error hover:bg-error-container/30 font-badge text-caption font-semibold transition-colors flex items-center gap-1 cursor-pointer" onclick="deleteItem('BRG-005')" type="button">
+            <span class="material-symbols-outlined text-[15px]">delete</span> Hapus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 6 (Realistic addition) -->
+    
+
+    <!-- Item 7 (Realistic addition) -->
+    
+
+    <!-- Item 8 (Realistic addition) -->
+    
+  </div>
+
+  <!-- Table Footer / Pagination -->
+  <div class="h-14 px-6 bg-[#FAF7FE] border-t border-[#E8E1EC] flex items-center justify-between">
+    <span class="font-body-small text-body-small text-on-surface-variant font-medium">Menampilkan 5 dari 5 barang</span>
+    <div class="flex items-center gap-2">
+      <button class="w-8 h-8 rounded-[8px] bg-[#C9B8EC] text-[#20133d] font-badge text-badge font-bold flex items-center justify-center shadow-sm cursor-pointer" type="button">1</button>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Right Column: Interactive Form Card (5 of 12 columns) -->
+<section class="col-span-12 xl:col-span-5">
+<div class="w-full rounded-[20px] bg-white border border-[#E8E1EC] p-6 shadow-[0_8px_24px_rgba(43,38,48,0.06)] flex flex-col gap-5">
+  <!-- Form Header -->
+  <div class="flex items-center justify-between pb-1 border-b border-[#E8E1EC]">
+    <h2 class="font-card-title text-card-title text-on-surface font-semibold">Tambah / Edit Barang</h2>
+    <span class="inline-flex items-center px-3 py-1 rounded-full bg-[#EDE7FA] text-[#4d3f6b] border border-[#C9B8EC]/40 font-badge text-badge font-medium" id="formModeBadge">Mode Baru</span>
+  </div>
+  <!-- Notification Banner -->
+  <div class="p-3.5 rounded-[12px] bg-[#EDE7FA] border border-[#C9B8EC]/30 flex items-center gap-2.5">
+    <span class="material-symbols-outlined text-[18px] text-[#4d3f6b]">info</span>
+    <span class="font-caption text-caption text-[#4d3f6b] font-medium">ID barang dibuat otomatis secara urut oleh sistem.</span>
+  </div>
+  <form class="flex flex-col gap-4" id="itemForm" onsubmit="event.preventDefault(); handleSave();">
+    <!-- Hidden Input for Active Edit Mode ID -->
+    <input id="fieldId" type="hidden" value="">
+    <!-- Input: Jenis -->
+    <div class="flex flex-col gap-1.5">
+      <label class="font-body-small text-body-small font-semibold text-on-surface" for="fieldJenis">Jenis</label>
+      <input class="w-full h-12 px-4 rounded-[12px] bg-white border border-[#E8E1EC] text-on-surface uppercase font-body-small text-body-small shadow-sm outline-none focus:border-[#C9B8EC] focus:shadow-md transition-all placeholder:text-on-surface-variant/60" id="fieldJenis" maxlength="1" placeholder="M" required="" type="text">
+      <span class="font-caption text-caption text-on-surface-variant">Contoh: M (Makanan) / B (Bahan Pokok) / K (Kebutuhan)</span>
+    </div>
+    <!-- Input: Nama Barang -->
+    <div class="flex flex-col gap-1.5">
+      <label class="font-body-small text-body-small font-semibold text-on-surface" for="fieldNama">Nama Barang</label>
+      <input class="w-full h-12 px-4 rounded-[12px] bg-white border border-[#E8E1EC] text-on-surface font-body-small text-body-small shadow-sm outline-none focus:border-[#C9B8EC] focus:shadow-md transition-all placeholder:text-on-surface-variant/60" id="fieldNama" placeholder="Contoh: Wafer Cokelat" required="" type="text">
+    </div>
+    <!-- Input: Satuan -->
+    <div class="flex flex-col gap-1.5">
+      <label class="font-body-small text-body-small font-semibold text-on-surface" for="fieldSatuan">Satuan</label>
+      <div class="relative">
+        <select class="w-full h-12 px-4 pr-10 rounded-[12px] bg-white border border-[#E8E1EC] text-on-surface font-body-small text-body-small shadow-sm outline-none appearance-none cursor-pointer focus:border-[#C9B8EC] focus:shadow-md transition-all" id="fieldSatuan" required="">
+          <option value="PCS">PCS</option>
+          <option value="LUSIN">LUSIN</option>
+          <option value="KG">KG</option>
+          <option value="LITER">LITER</option>
+          <option value="SACHET">SACHET</option>
+        </select>
+        <span class="material-symbols-outlined absolute right-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+      </div>
+    </div>
+    <!-- Input: Status Selector -->
+    <div class="flex flex-col gap-1.5">
+      <label class="font-body-small text-body-small font-semibold text-on-surface">Status</label>
+      <div class="flex items-center gap-3">
+        <button class="flex-1 h-12 rounded-[12px] bg-tertiary-fixed text-on-surface font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all shadow-sm" id="statusAktifBtn" onclick="setStatus('Aktif')" type="button">
+          <span class="material-symbols-outlined text-[18px]">check_circle</span>
+          <span class="">Aktif</span>
+        </button>
+        <button class="flex-1 h-12 rounded-[12px] bg-surface-container-low text-on-surface-variant font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all" id="statusNonaktifBtn" onclick="setStatus('Nonaktif')" type="button">
+          <span class="material-symbols-outlined text-[18px]">cancel</span>
+          <span class="">Nonaktif</span>
+        </button>
+      </div>
+      <input id="fieldStatus" type="hidden" value="Aktif">
+    </div>
+    <!-- Input: Harga -->
+    <div class="flex flex-col gap-1.5">
+      <label class="font-body-small text-body-small font-semibold text-on-surface" for="fieldHarga">Harga Satuan</label>
+      <div class="relative flex items-center">
+        <span class="absolute left-4 font-body-small text-body-small font-semibold text-on-surface-variant">Rp</span>
+        <input class="w-full h-12 pl-12 pr-4 rounded-[12px] bg-white border border-[#E8E1EC] text-on-surface font-body-small text-body-small shadow-sm outline-none focus:border-[#C9B8EC] focus:shadow-md transition-all placeholder:text-on-surface-variant/60" id="fieldHarga" placeholder="Contoh: 15000" required="" type="number">
+      </div>
+    </div>
+    <!-- Form Actions -->
+    <div class="flex items-center gap-3 pt-3">
+      <button class="flex-1 h-12 rounded-[14px] bg-primary-container text-on-surface font-card-title text-body-small font-semibold flex items-center justify-center gap-2 hover:opacity-95 shadow-sm active:scale-[0.98] transition-all cursor-pointer" type="submit">
+        <span class="material-symbols-outlined text-[18px]">save</span>
+        <span class="">Simpan</span>
+      </button>
+      <button class="flex-1 h-12 rounded-[14px] bg-[#EDE7FA] text-[#4d3f6b] hover:bg-[#C9B8EC]/50 font-card-title text-body-small font-semibold flex items-center justify-center gap-2 shadow-sm active:scale-[0.98] transition-all cursor-pointer" onclick="resetForm('create')" type="button">
+        <span class="">Batal</span>
+      </button>
+    </div>
+  </form>
+</div>
+</section>
+</div>
+</div>
+<script>
+  let activeStatus = 'Aktif';
+
+  function setStatus(status) {
+    activeStatus = status;
+    const field = document.getElementById('fieldStatus');
+    const aktifBtn = document.getElementById('statusAktifBtn');
+    const nonaktifBtn = document.getElementById('statusNonaktifBtn');
+    
+    if (field) field.value = status;
+
+    if (status === 'Aktif') {
+      aktifBtn.className = 'flex-1 h-12 rounded-[12px] bg-tertiary-fixed text-on-surface font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all shadow-sm';
+      nonaktifBtn.className = 'flex-1 h-12 rounded-[12px] bg-surface-container-low text-on-surface-variant font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all';
+    } else {
+      nonaktifBtn.className = 'flex-1 h-12 rounded-[12px] bg-error-container text-on-surface font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all shadow-sm';
+      aktifBtn.className = 'flex-1 h-12 rounded-[12px] bg-surface-container-low text-on-surface-variant font-body-small text-body-small font-medium flex items-center justify-center gap-1.5 transition-all';
+    }
+  }
+
+  function editItem(id, jenis, nama, satuan, status, harga) {
+    document.getElementById('fieldId').value = id;
+    document.getElementById('fieldJenis').value = jenis;
+    document.getElementById('fieldNama').value = nama;
+    document.getElementById('fieldSatuan').value = satuan;
+    document.getElementById('fieldHarga').value = harga;
+    setStatus(status);
+
+    const badge = document.getElementById('formModeBadge');
+    if (badge) {
+      badge.textContent = 'Edit: ' + id;
+      badge.className = 'inline-flex items-center px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-badge text-badge font-semibold';
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function resetForm(mode) {
+    document.getElementById('fieldId').value = '';
+    document.getElementById('fieldJenis').value = '';
+    document.getElementById('fieldNama').value = '';
+    document.getElementById('fieldSatuan').value = 'PCS';
+    document.getElementById('fieldHarga').value = '';
+    setStatus('Aktif');
+
+    const badge = document.getElementById('formModeBadge');
+    if (badge) {
+      badge.textContent = 'Mode Baru';
+      badge.className = 'inline-flex items-center px-3 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-badge text-badge font-medium';
+    }
+  }
+
+  function deleteItem(id) {
+    if (confirm('Hapus barang dengan kode ' + id + '?')) {
+      alert('Barang ' + id + ' berhasil dihapus dari katalog.');
+    }
+  }
+
+  function handleSave() {
+    const id = document.getElementById('fieldId').value || 'BRG-00' + Math.floor(Math.random() * 90 + 10);
+    const nama = document.getElementById('fieldNama').value;
+    alert('Data inventaris ' + nama + ' (' + id + ') berhasil disimpan!');
+    resetForm('create');
+  }
+
+  // Active state matching App Shell sidebar
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeNav = document.querySelector('a[data-path="barang"]');
+    if (activeNav) {
+      activeNav.className = 'h-12 px-4 rounded-[14px] flex items-center gap-space-sm bg-secondary-fixed text-on-secondary-fixed font-semibold font-body-small text-body-small transition-colors';
+    }
+  });
+</script></main></div>
+
+
+
+
+
+
+
+</body></html>

@@ -30,11 +30,11 @@ class LoginController extends Controller
 
         // Cari user dengan raw SQL dan binding ?
         $users = DB::select(
-            'SELECT u.iduser, u.username, r.nama_role 
-             FROM user u 
-             JOIN role r ON u.idrole = r.idrole 
-             WHERE u.username = ? AND u.password = SHA2(?, 256) 
-             LIMIT 1',
+            'SELECT u.iduser, u.username, r.nama_role
+            FROM user u
+            JOIN role r ON u.idrole = r.idrole
+            WHERE u.username = ? AND u.password = SHA2(?, 256)
+            LIMIT 1',
             [$username, $password]
         );
 

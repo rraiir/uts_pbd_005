@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\VendorController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\MarginPenjualanController;
 
 // ===== Halaman Login (tanpa middleware) =====
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -16,6 +21,11 @@ Route::get('/', fn () => redirect('/login'));
 Route::middleware(['cekrole:Admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', fn () => view('admin.dashboard'))->name('admin.dashboard');
     Route::get('/satuan', [SatuanController::class, 'index'])->name('admin.satuan');
+    Route::get('/barang', [BarangController::class, 'index'])->name('admin.barang');
+    Route::get('/vendor', [VendorController::class, 'index'])->name('admin.vendor');
+    Route::get('/user', [UserController::class, 'index'])->name('admin.user');
+    Route::get('/role', [RoleController::class, 'index'])->name('admin.role');
+    Route::get('/margin', [MarginPenjualanController::class, 'index'])->name('admin.margin');
 });
 
 // ===== Route Manager =====
