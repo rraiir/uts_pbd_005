@@ -1,0 +1,326 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StokKu - Buat Pengadaan</title>
+<!-- Google Font: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            stok: {
+              bg: '#FFFFFF',
+              pink: '#D8A7B1',
+              pinkTint: '#F6E3E7',
+              lavender: '#C9B8EC',
+              lavenderLight: '#EDE7FA',
+              mint: '#BFE8D6',
+              yellow: '#FBEFB5',
+              charcoal: '#2B2630',
+              muted: '#6F6677',
+              border: '#E8E1EC',
+              danger: '#B5516B',
+            }
+          },
+          boxShadow: {
+            card: '0 8px 24px rgba(43, 38, 48, 0.06)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #2B2630;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style data-purpose="custom-elements">
+    /* Remove native arrow styling where appropriate */
+    select {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236F6677' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+      background-position: right 0.75rem center;
+      background-repeat: no-repeat;
+      background-size: 1.25em 1.25em;
+      padding-right: 2.5rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen relative flex flex-col overflow-x-hidden selection:bg-[#EDE7FA] selection:text-[#2B2630]">
+<!-- Soft Decorative Blurred Circles in empty corners -->
+<div class="pointer-events-none fixed top-[-80px] right-[-80px] w-96 h-96 bg-[#EDE7FA] rounded-full blur-3xl opacity-60 z-0"></div>
+<div class="pointer-events-none fixed bottom-[-100px] right-[25%] w-[420px] h-[420px] bg-[#F6E3E7] rounded-full blur-3xl opacity-40 z-0"></div>
+<!-- BEGIN: TopHeader -->
+<header class="h-[72px] w-full bg-[#FFFFFF] border-b border-[#E8E1EC] px-8 flex items-center justify-between relative z-20">
+<!-- Brand Logo and Name -->
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#EDE7FA] flex items-center justify-center text-[#2B2630]">
+<!-- Geometric Cube/Layer Icon -->
+<svg class="w-6 h-6 text-[#2B2630]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-[#2B2630]">StokKu</span>
+</div>
+<!-- User Profile & Session Controls -->
+<div class="flex items-center gap-3">
+<!-- Profile Badge -->
+<div class="flex items-center gap-2.5 px-3.5 py-2 rounded-full border border-[#E8E1EC] bg-white">
+<div class="w-7 h-7 rounded-full bg-[#EDE7FA] flex items-center justify-center text-[#2B2630]">
+<svg class="w-4 h-4 text-[#2B2630]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+</div>
+<span class="text-sm font-medium text-[#2B2630]">manager1</span>
+</div>
+<!-- Sign Out Button -->
+<button class="flex items-center gap-2 px-4 py-2 rounded-[14px] border border-[#E8E1EC] text-[#2B2630] font-medium text-sm hover:bg-[#F6E3E7]/40 transition-colors" type="button">
+<svg class="w-4 h-4 text-[#2B2630]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+<polyline points="16 17 21 12 16 7"></polyline>
+<line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<span class="">Keluar</span>
+</button>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- Body Content Layout with Left Sidebar & Main Panel -->
+<div class="flex flex-1 relative z-10 w-full min-h-[calc(100vh-72px)]">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-[260px] bg-[#FFFFFF] border-r border-[#E8E1EC] p-6 flex flex-col justify-between shrink-0">
+<!-- Navigation Menu Links -->
+<nav class="space-y-2">
+<!-- Menu: Dashboard -->
+<a class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[#6F6677] hover:bg-[#EDE7FA]/50 hover:text-[#2B2630] font-medium text-sm transition-colors" href="#">
+<svg class="w-5 h-5 text-current" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<rect height="7" width="7" x="3" y="3"></rect>
+<rect height="7" width="7" x="14" y="3"></rect>
+<rect height="7" width="7" x="14" y="14"></rect>
+<rect height="7" width="7" x="3" y="14"></rect>
+</svg>
+<span class="">Dashboard</span>
+</a>
+<!-- Menu: Pengadaan (ACTIVE) -->
+<a class="h-12 px-4 rounded-[14px] bg-[#EDE7FA] flex items-center gap-3 text-[#2B2630] font-bold text-sm" href="#">
+<svg class="w-5 h-5 text-[#2B2630]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+<line x1="3" x2="21" y1="6" y2="6"></line>
+<path d="M16 10a4 4 0 0 1-8 0"></path>
+</svg>
+<span class="">Pengadaan</span>
+</a>
+</nav>
+<!-- Sidebar Bottom Info Card -->
+<div class="rounded-[18px] border border-[#E8E1EC] bg-[#FFFFFF] p-4">
+<div class="flex items-center gap-2 mb-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#10B981]"></span>
+<span class="text-xs font-bold text-[#2B2630]">Role Manager</span>
+</div>
+<p class="text-xs text-[#6F6677] leading-relaxed">
+          Kelola dan setujui alur pengadaan stok gudang.
+        </p>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 p-12 overflow-y-auto">
+<div class="max-w-[1100px] mx-auto">
+<!-- Breadcrumb / Back Link -->
+<div class="mb-4">
+<a class="inline-flex items-center gap-2 text-sm font-medium text-[#6F6677] hover:text-[#2B2630] transition-colors" href="#">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="">Kembali ke Daftar Pengadaan</span>
+</a>
+</div>
+<!-- Page Title & Subtitle -->
+<div class="mb-8">
+<h1 class="text-[44px] font-bold text-[#2B2630] tracking-tight flex items-center gap-3">
+<span class="">Buat</span>
+<span class="bg-[#D8A7B1] text-[#2B2630] rounded-[10px] px-3.5 py-1 text-[40px] leading-tight font-bold">
+              Pengadaan
+            </span>
+</h1>
+<p class="text-[#6F6677] text-base mt-2 font-normal">
+            Pesan barang baru ke vendor.
+          </p>
+</div>
+<!-- Two Column Main Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT FORM CARD (~68% width on desktop) -->
+<section class="lg:col-span-8 bg-[#FFFFFF] border border-[#E8E1EC] rounded-[20px] p-6 shadow-card" data-purpose="form-main-card">
+<!-- Vendor Selection -->
+<div class="mb-5">
+<label class="block text-[15px] font-semibold text-[#2B2630] mb-2" for="vendor-select">
+                Vendor <span class="text-[#B5516B]">*</span>
+</label>
+<select class="w-full h-12 rounded-xl border border-[#E8E1EC] bg-white text-[#2B2630] text-sm font-medium focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]" id="vendor-select">
+<option selected="" value="PT Mitra Pangan">PT Mitra Pangan</option>
+<option value="CV Berkah Jaya">CV Berkah Jaya</option>
+<option value="PT Sumber Rejeki">PT Sumber Rejeki</option>
+<option value="UD Makmur Sentosa">UD Makmur Sentosa</option>
+<option value="Toko Sinar Baru">Toko Sinar Baru</option>
+</select>
+</div>
+<!-- Notice / System Info Callout -->
+<div class="bg-[#EDE7FA] rounded-xl p-4 flex items-center gap-3 text-sm text-[#2B2630]">
+<svg class="w-5 h-5 text-[#2B2630] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<line stroke-linecap="round" stroke-width="2" x1="12" x2="12" y1="16" y2="12"></line>
+<circle cx="12" cy="8" fill="currentColor" r="1"></circle>
+</svg>
+<span class="">Tanggal dan status diisi otomatis oleh sistem.</span>
+</div>
+<!-- Divider -->
+<hr class="border-t border-[#E8E1EC] my-6">
+<!-- Items List Section Header -->
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-semibold text-[#2B2630]">Daftar Barang Pesanan</h2>
+<button class="bg-[#EDE7FA] hover:bg-[#C9B8EC]/50 text-[#2B2630] px-4 py-2 rounded-xl text-sm font-medium transition-colors inline-flex items-center gap-1.5" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M12 4v16m8-8H4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+                Tambah Barang
+              </button>
+</div>
+<!-- Order Items Table -->
+<div class="border border-[#E8E1EC] rounded-[14px] overflow-hidden mb-6">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#EDE7FA] text-[12px] font-bold text-[#6F6677] tracking-wider uppercase">
+<th class="py-3 px-4">Barang</th>
+<th class="py-3 px-4 text-center w-28">Jumlah</th>
+<th class="py-3 px-4 w-36">Harga Satuan</th>
+<th class="py-3 px-4">Sub Total</th>
+<th class="py-3 px-4 text-center w-16">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E8E1EC] text-sm">
+<!-- Row 1 -->
+<tr class="h-16 hover:bg-[#F6E3E7]/20 transition-colors">
+<td class="px-4 py-2">
+<select aria-label="Pilih Barang" class="w-full h-10 text-sm font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] bg-white focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]">
+<option selected="">Wafer Cokelat 100gr</option>
+<option>Biskuit Susu 150gr</option>
+<option>Kopi Bubuk 200gr</option>
+</select>
+</td>
+<td class="px-4 py-2 text-center">
+<input aria-label="Jumlah Barang" class="w-24 h-10 text-center font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]" type="number" value="100">
+</td>
+<td class="px-4 py-2">
+<input aria-label="Harga Satuan" class="w-32 h-10 font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]" type="text" value="Rp 2.500">
+</td>
+<td class="px-4 py-2 font-semibold text-[#2B2630] whitespace-nowrap">
+                        Rp 250.000
+                      </td>
+<td class="px-4 py-2 text-center">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-[#B5516B] text-[#B5516B] hover:bg-[#F6E3E7] transition-colors" title="Hapus Barang" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<polyline points="3 6 5 6 21 6"></polyline>
+<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+</svg>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="h-16 hover:bg-[#F6E3E7]/20 transition-colors">
+<td class="px-4 py-2">
+<select aria-label="Pilih Barang" class="w-full h-10 text-sm font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] bg-white focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]">
+<option>Wafer Cokelat 100gr</option>
+<option selected="">Biskuit Susu 150gr</option>
+<option>Kopi Bubuk 200gr</option>
+</select>
+</td>
+<td class="px-4 py-2 text-center">
+<input aria-label="Jumlah Barang" class="w-24 h-10 text-center font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]" type="number" value="50">
+</td>
+<td class="px-4 py-2">
+<input aria-label="Harga Satuan" class="w-32 h-10 font-medium rounded-lg border-[#E8E1EC] text-[#2B2630] focus:ring-1 focus:ring-[#C9B8EC] focus:border-[#C9B8EC]" type="text" value="Rp 3.000">
+</td>
+<td class="px-4 py-2 font-semibold text-[#2B2630] whitespace-nowrap">
+                        Rp 150.000
+                      </td>
+<td class="px-4 py-2 text-center">
+<button class="inline-flex items-center justify-center w-8 h-8 rounded-lg border border-[#B5516B] text-[#B5516B] hover:bg-[#F6E3E7] transition-colors" title="Hapus Barang" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<polyline points="3 6 5 6 21 6"></polyline>
+<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+</svg>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom Add Row Button -->
+<button class="bg-[#EDE7FA] hover:bg-[#C9B8EC]/50 text-[#2B2630] py-2.5 px-4 rounded-xl font-medium text-sm inline-flex items-center gap-2 transition-colors" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<line stroke-linecap="round" stroke-width="2" x1="12" x2="12" y1="5" y2="19"></line>
+<line stroke-linecap="round" stroke-width="2" x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span class="">&nbsp;Tambah Barang</span>
+</button>
+</section>
+<!-- RIGHT SUMMARY CARD (~32% width on desktop) -->
+<section class="lg:col-span-4 bg-[#FFFFFF] border border-[#E8E1EC] rounded-[20px] p-6 shadow-card sticky top-8" data-purpose="order-summary-card">
+<div class="flex items-center justify-between">
+<h2 class="text-xl font-bold text-[#2B2630]">Ringkasan</h2>
+<span class="bg-[#EDE7FA] text-[#2B2630] text-xs font-semibold px-3 py-1 rounded-full">
+                Pesanan Baru
+              </span>
+</div>
+<hr class="border-t border-[#E8E1EC] my-4">
+<!-- Cost Breakdown -->
+<div class="space-y-3.5 text-sm">
+<div class="flex items-center justify-between">
+<span class="text-[#6F6677]">Total Item</span>
+<span class="font-semibold text-[#2B2630]">2 Barang (150 pcs)</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[#6F6677]">Subtotal</span>
+<span class="font-medium text-[#2B2630]">Rp 400.000</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-[#6F6677]">PPN (11%)</span>
+<span class="font-medium text-[#2B2630]">Rp 44.000</span>
+</div>
+<hr class="border-t border-[#E8E1EC] pt-1">
+<div class="flex items-center justify-between pt-1">
+<span class="text-base font-bold text-[#2B2630]">Total Pembelian</span>
+<span class="text-[22px] font-bold text-[#2B2630]">Rp 444.000</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 space-y-3">
+<button class="w-full h-12 rounded-[14px] bg-[#D8A7B1] text-[#2B2630] font-semibold text-base flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.99] transition-all" type="button">
+<span class="">Simpan Pengadaan</span>
+</button>
+<button class="w-full h-12 rounded-[14px] bg-[#EDE7FA] hover:bg-[#C9B8EC]/50 text-[#2B2630] font-medium text-base flex items-center justify-center transition-colors" type="button">
+<span class="">Batal</span>
+</button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+</div>
+
+
+</body></html>

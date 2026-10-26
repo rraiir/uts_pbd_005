@@ -1,0 +1,297 @@
+<!DOCTYPE html><html lang="id"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StokKu - Terima Barang</title>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              main: '#2B2630',
+              muted: '#6F6677',
+              border: '#E8E1EC',
+              lavender: '#EDE7FA',
+              dustypink: '#D8A7B1',
+              mint: '#BFE8D6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="base-styling">
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #2B2630;
+      background-color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Hide spin buttons for clean numeric input */
+    input[type='number']::-webkit-inner-spin-button,
+    input[type='number']::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    input[type='number'] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-white flex flex-col antialiased selection:bg-[#D8A7B1] selection:text-[#2B2630]">
+<!-- BEGIN: TopNavigation -->
+<header class="h-[72px] bg-white border-b border-[#E8E1EC] px-8 flex items-center justify-between sticky top-0 z-30">
+<!-- Brand Logo Area -->
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 bg-[#EDE7FA] rounded-xl flex items-center justify-center text-[#2B2630]">
+<!-- Cubic 3D Box Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" x2="12" y1="22.08" y2="12"></line>
+</svg>
+</div>
+<span class="font-bold text-xl text-[#2B2630] tracking-tight">StokKu</span>
+</div>
+<!-- User & Session Controls -->
+<div class="flex items-center gap-3">
+<!-- User Identification Pill -->
+<div class="h-10 pl-1.5 pr-4 rounded-full border border-[#E8E1EC] flex items-center gap-2.5 bg-white">
+<div class="w-7 h-7 rounded-full bg-[#EDE7FA] flex items-center justify-center text-[#2B2630]">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+</div>
+<span class="text-[15px] font-medium text-[#2B2630]">gudang1</span>
+</div>
+<!-- Logout Button -->
+<button class="border border-[#E8E1EC] hover:bg-slate-50 text-[#2B2630] rounded-[14px] px-4 py-2 text-sm font-medium flex items-center gap-2 transition-colors duration-150" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+<polyline points="16 17 21 12 16 7"></polyline>
+<line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<span class="">Keluar</span>
+</button>
+</div>
+</header>
+<!-- END: TopNavigation -->
+<div class="flex flex-1">
+<!-- BEGIN: Sidebar -->
+<aside class="w-[260px] bg-white border-r border-[#E8E1EC] flex flex-col justify-between p-4 flex-shrink-0">
+<!-- Navigation Menu -->
+<nav aria-label="Main Navigation" class="space-y-1.5">
+<!-- Dashboard Link -->
+<a class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[15px] text-[#6F6677] hover:bg-[#EDE7FA]/50 transition-colors" href="#">
+<svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<rect height="7" width="7" x="3" y="3"></rect>
+<rect height="7" width="7" x="14" y="3"></rect>
+<rect height="7" width="7" x="14" y="14"></rect>
+<rect height="7" width="7" x="3" y="14"></rect>
+</svg>
+<span class="font-medium">Dashboard</span>
+</a>
+<!-- Penerimaan Link (Active) -->
+<a aria-current="page" class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[15px] bg-[#EDE7FA] text-[#2B2630] font-bold" href="#">
+<svg class="w-5 h-5 text-[#2B2630]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M22 12h-6l-2 3h-4l-2-3H2"></path>
+<path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+</svg>
+<span class="">Penerimaan</span>
+</a>
+<!-- Retur Link -->
+<a class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[15px] text-[#6F6677] hover:bg-[#EDE7FA]/50 transition-colors" href="#">
+<svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<polyline points="1 4 1 10 7 10"></polyline>
+<path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+</svg>
+<span class="font-medium">Retur</span>
+</a>
+<!-- Kartu Stok Link -->
+<a class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[15px] text-[#6F6677] hover:bg-[#EDE7FA]/50 transition-colors" href="#">
+<svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+<span class="font-medium">Kartu Stok</span>
+</a>
+</nav>
+<!-- Bottom Role Card -->
+<div class="bg-[#EDE7FA]/60 rounded-[16px] p-3.5 border border-[#E8E1EC]" data-purpose="role-badge">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+<span class="font-bold text-sm text-[#2B2630]">Role Gudang</span>
+</div>
+<p class="text-xs text-[#6F6677] leading-relaxed">
+          Terima barang fisik dan kelola stok gudang harian.
+        </p>
+</div>
+</aside>
+<!-- END: Sidebar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 bg-white min-h-[calc(100vh-72px)] p-8 relative overflow-hidden">
+<!-- Decorative Blurred Corner Accents -->
+<div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-[#EDE7FA] blur-3xl opacity-40 pointer-events-none -z-0"></div>
+<div class="absolute -bottom-24 right-1/4 w-96 h-96 rounded-full bg-[#D8A7B1]/20 blur-3xl opacity-40 pointer-events-none -z-0"></div>
+<div class="relative z-10 max-w-7xl mx-auto">
+<!-- Back Link / Breadcrumb -->
+<a class="inline-flex items-center gap-1.5 text-sm font-medium text-[#6F6677] hover:text-[#2B2630] transition-colors mb-3" href="#">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<line x1="19" x2="5" y1="12" y2="12"></line>
+<polyline points="12 19 5 12 12 5"></polyline>
+</svg>
+<span class="">Kembali ke Daftar Penerimaan</span>
+</a>
+<!-- Page Header -->
+<div class="mb-8">
+<h1 class="text-[44px] leading-tight font-bold text-[#2B2630] flex items-center gap-3">
+<span class="">Terima</span>
+<span class="bg-[#D8A7B1] text-[#2B2630] px-3.5 py-1 rounded-[10px] inline-block font-bold">Barang</span>
+</h1>
+<p class="text-base text-[#6F6677] mt-2">Catat barang yang datang dari vendor, boleh dicicil.</p>
+</div>
+<!-- Form and Summary Grid Layout -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- BEGIN: LeftFormCard -->
+<section class="col-span-8 bg-white rounded-[20px] border border-[#E8E1EC] p-6 shadow-[0_8px_24px_rgba(43,38,48,0.06)]" data-purpose="goods-receipt-form">
+<!-- Pengadaan Select Field -->
+<div>
+<label class="block font-semibold text-[15px] text-[#2B2630] mb-2" for="pengadaan-select">
+                Pengadaan <span class="text-red-500">*</span>
+</label>
+<div class="relative">
+<button class="h-12 border border-[#E8E1EC] rounded-[12px] px-4 w-full bg-white text-[#2B2630] font-medium flex items-center justify-between cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#D8A7B1] focus:border-transparent text-left" id="pengadaan-select" type="button">
+<span class="">#1 - PT Mitra Pangan</span>
+<svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</button>
+</div>
+</div>
+<!-- Auto-fill Info Alert -->
+<div class="mt-4 bg-[#EDE7FA] text-[#2B2630] text-sm p-3.5 rounded-[12px] flex items-center gap-2.5 font-medium border border-[#E8E1EC]/50">
+<svg class="w-5 h-5 flex-shrink-0 text-[#2B2630]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12.01" y1="8" y2="8"></line>
+</svg>
+<span class="">Tanggal dan status diisi otomatis oleh sistem.</span>
+</div>
+<!-- Items Table Section Header -->
+<div class="mt-6 mb-4 flex items-center justify-between">
+<h2 class="font-bold text-base text-[#2B2630]">Daftar Barang Penerimaan</h2>
+<span class="bg-[#EDE7FA] text-[#2B2630] text-xs font-semibold px-3 py-1 rounded-full">
+                Bisa Dicicil
+              </span>
+</div>
+<!-- Items Table Container -->
+<div class="rounded-[14px] border border-[#E8E1EC] overflow-hidden">
+<!-- Table Header -->
+<div class="bg-[#EDE7FA] text-[#2B2630] text-xs font-bold uppercase tracking-wider py-3.5 px-4 grid grid-cols-12 gap-2 items-center">
+<div class="col-span-3">BARANG</div>
+<div class="col-span-2 text-center">DIPESAN</div>
+<div class="col-span-2 text-center">SUDAH DITERIMA</div>
+<div class="col-span-2 text-center">TERIMA SEKARANG</div>
+<div class="col-span-2 text-right">HARGA SATUAN</div>
+<div class="col-span-1 text-right">SUB TOTAL</div>
+</div>
+<!-- Table Body / Items -->
+<div class="divide-y divide-[#E8E1EC]">
+<!-- Table Row 1 -->
+<div class="h-14 py-3 px-4 grid grid-cols-12 gap-2 items-center text-sm bg-white hover:bg-slate-50/50 transition-colors">
+<!-- Col: Barang -->
+<div class="col-span-3 font-semibold text-[#2B2630] truncate">
+                    Wafer Cokelat
+                  </div>
+<!-- Col: Dipesan -->
+<div class="col-span-2 text-center font-medium text-[#2B2630]">
+                    100
+                  </div>
+<!-- Col: Sudah Diterima -->
+<div class="col-span-2 flex justify-center">
+<span class="font-medium text-[#6F6677] bg-slate-100 rounded-lg py-1 px-3 text-center text-xs">
+                      10
+                    </span>
+</div>
+<!-- Col: Terima Sekarang Input -->
+<div class="col-span-2 flex justify-center">
+<input aria-label="Kuantitas terima sekarang wafer cokelat" class="h-9 w-20 text-center font-semibold text-[#2B2630] border-2 border-[#D8A7B1] bg-white rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#D8A7B1] text-sm p-0" max="90" min="0" type="number" value="10">
+</div>
+<!-- Col: Harga Satuan -->
+<div class="col-span-2 text-right text-[#6F6677] font-medium text-xs">
+                    Rp 2.500
+                  </div>
+<!-- Col: Sub Total -->
+<div class="col-span-1 text-right font-bold text-[#2B2630] text-xs">
+                    Rp 25.000
+                  </div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: LeftFormCard -->
+<!-- BEGIN: RightSummaryCard -->
+<section class="col-span-4 bg-white rounded-[20px] border border-[#E8E1EC] p-6 shadow-[0_8px_24px_rgba(43,38,48,0.06)]" data-purpose="receipt-summary">
+<!-- Header with Badge -->
+<div class="flex justify-between items-center pb-4 border-b border-[#E8E1EC]">
+<h2 class="text-xl font-bold text-[#2B2630]">Ringkasan</h2>
+<span class="bg-[#EDE7FA] text-[#2B2630] text-xs font-semibold px-3 py-1 rounded-full">
+                Penerimaan #1
+              </span>
+</div>
+<!-- Breakdown Lines -->
+<div class="space-y-3 py-4 text-sm">
+<div class="flex justify-between items-center">
+<span class="text-[#6F6677]">Total Item Diterima</span>
+<span class="font-semibold text-[#2B2630]">1 Barang (10 pcs)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-[#6F6677]">Status Pengadaan Nanti</span>
+<span class="bg-[#BFE8D6] text-[#2B2630] text-xs font-semibold px-2.5 py-0.5 rounded-full">
+                  Parsial/Sebagian
+                </span>
+</div>
+</div>
+<div class="border-t border-[#E8E1EC] my-1"></div>
+<!-- Total Price Section -->
+<div class="pt-3">
+<span class="text-sm font-semibold text-[#2B2630] block">Total Terima</span>
+<div class="text-2xl font-black text-[#2B2630] tracking-tight mt-1">
+                Rp 25.000
+              </div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-6 flex flex-col gap-3">
+<button class="w-full h-12 bg-[#D8A7B1] hover:bg-[#c9959f] text-[#2B2630] font-bold rounded-[14px] shadow-sm flex items-center justify-center gap-2 cursor-pointer transition-colors" type="button">
+<span class="">Simpan Penerimaan</span>
+</button>
+<button class="w-full h-12 bg-[#EDE7FA] hover:bg-[#e0d7f3] text-[#2B2630] font-semibold rounded-[14px] flex items-center justify-center cursor-pointer transition-colors" type="button">
+<span class="">Batal</span>
+</button>
+</div>
+</section>
+<!-- END: RightSummaryCard -->
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+</div>
+
+
+</body></html>

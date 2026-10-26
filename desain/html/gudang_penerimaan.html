@@ -1,0 +1,296 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StokKu - Kelola Penerimaan</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FFFFFF;
+      color: #2B2630;
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen relative text-[#2B2630]">
+  <!-- Soft blurred background decorative circles in corners -->
+  <div class="fixed -top-24 -right-24 w-96 h-96 rounded-full bg-[#EDE7FA]/40 blur-3xl pointer-events-none -z-10"></div>
+  <div class="fixed -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#D8A7B1]/20 blur-3xl pointer-events-none -z-10"></div>
+
+  <!-- Top Bar 72px -->
+  <header class="h-[72px] bg-white border-b border-[#E8E1EC] px-8 flex items-center justify-between sticky top-0 z-30">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-[#EDE7FA] flex items-center justify-center text-[#2B2630]">
+        <svg class="w-6 h-6 stroke-[#2B2630]" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+        </svg>
+      </div>
+      <span class="text-2xl font-bold tracking-tight text-[#2B2630]">StokKu</span>
+    </div>
+
+    <!-- Right User Info & Logout -->
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2.5 px-4 py-2 rounded-full border border-[#E8E1EC] bg-white text-sm">
+        <div class="w-7 h-7 rounded-full bg-[#EDE7FA] flex items-center justify-center text-[#2B2630]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+          </svg>
+        </div>
+        <span class="font-medium text-[#2B2630]">gudang1</span>
+      </div>
+
+      <button class="flex items-center gap-2 px-4 py-2 rounded-[14px] border border-[#E8E1EC] hover:bg-[#EDE7FA]/40 transition text-sm font-medium text-[#2B2630]">
+        <svg class="w-4 h-4 text-[#6F6677]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+        </svg>
+        <span class="">Keluar</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex">
+    <!-- Left Sidebar 260px (Gudang role) -->
+    <aside class="w-[260px] min-h-[calc(100vh-72px)] bg-white border-r border-[#E8E1EC] p-5 flex flex-col justify-between shrink-0">
+      <nav class="space-y-1.5">
+        <!-- Dashboard -->
+        <a href="#" class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[#6F6677] hover:bg-[#EDE7FA]/50 transition text-sm font-medium">
+          <svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+            <rect x="14" y="14" width="7" height="7" rx="1.5"></rect>
+            <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+          </svg>
+          <span class="">Dashboard</span>
+        </a>
+
+        <!-- Penerimaan (ACTIVE) -->
+        <a href="#" class="h-12 px-4 rounded-[14px] flex items-center gap-3 bg-[#EDE7FA] text-[#2B2630] font-bold text-sm shadow-sm">
+          <svg class="w-5 h-5 text-[#2B2630]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+          </svg>
+          <span class="">Penerimaan</span>
+        </a>
+
+        <!-- Retur -->
+        <a href="#" class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[#6F6677] hover:bg-[#EDE7FA]/50 transition text-sm font-medium">
+          <svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+          </svg>
+          <span class="">Retur</span>
+        </a>
+
+        <!-- Kartu Stok -->
+        <a href="#" class="h-12 px-4 rounded-[14px] flex items-center gap-3 text-[#6F6677] hover:bg-[#EDE7FA]/50 transition text-sm font-medium">
+          <svg class="w-5 h-5 text-[#6F6677]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span class="">Kartu Stok</span>
+        </a>
+      </nav>
+
+      <!-- Role Gudang Bottom Tag -->
+      <div class="bg-[#EDE7FA]/60 border border-[#E8E1EC] rounded-2xl p-4 mt-8">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#BFE8D6] inline-block"></span>
+          <span class="text-xs font-bold text-[#2B2630]">Role Gudang</span>
+        </div>
+        <p class="text-xs text-[#6F6677] leading-relaxed">
+          Terima barang fisik dan kelola stok gudang harian.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Content Area (Padding 48px) -->
+    <main class="flex-1 p-12 overflow-x-hidden max-w-[1180px]">
+      <!-- Title Section -->
+      <div class="mb-8">
+        <div class="flex items-center gap-3 text-[44px] font-bold tracking-tight text-[#2B2630] leading-none mb-3">
+          <span class="">Kelola</span>
+          <span class="bg-[#D8A7B1] text-[#2B2630] px-3.5 py-1 rounded-[10px]">Penerimaan</span>
+        </div>
+        <p class="text-base text-[#6F6677]">Riwayat barang yang diterima dari vendor.</p>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="flex items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-3 flex-1 max-w-xl">
+          <!-- Search input -->
+          <div class="relative w-80">
+            <svg class="w-4 h-4 text-[#6F6677] absolute left-4 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+            <input type="text" placeholder="Cari vendor..." class="w-full h-11 pl-11 pr-4 rounded-[14px] border border-[#E8E1EC] bg-white text-sm focus:outline-none focus:border-[#D8A7B1] transition text-[#2B2630] placeholder-[#6F6677]">
+          </div>
+
+          <!-- Total Pill -->
+          <div class="h-11 px-5 rounded-[14px] bg-[#EDE7FA] text-[#2B2630] text-sm font-semibold flex items-center justify-center whitespace-nowrap">
+            Total: 3 Penerimaan
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button class="h-11 px-5 rounded-[14px] bg-[#D8A7B1] text-[#2B2630] font-semibold text-sm hover:opacity-95 transition flex items-center gap-2 shadow-sm whitespace-nowrap">
+          <svg class="w-4 h-4 stroke-[#2B2630]" fill="none" stroke-width="2.5" viewBox="0 0 24 24">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span class="">Terima Barang</span>
+        </button>
+      </div>
+
+      <!-- Two Columns Layout: Table Card Left, Form/Detail Card Right (~370px, 24px gap) -->
+      <div class="flex items-start gap-6">
+        <!-- Table Card Left -->
+        <div class="flex-1 bg-white border border-[#E8E1EC] rounded-[20px] shadow-[0_8px_24px_rgba(43,38,48,0.06)] overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-[#EDE7FA] h-12 text-[#2B2630] text-xs font-bold uppercase tracking-wider">
+                <th class="py-3 px-4 w-12 text-center">ID</th>
+                <th class="py-3 px-4">Tanggal</th>
+                <th class="py-3 px-4">ID Pengadaan</th>
+                <th class="py-3 px-4">Vendor</th>
+                <th class="py-3 px-4">Diterima Oleh</th>
+                <th class="py-3 px-4 text-center">Status</th>
+                <th class="py-3 px-4 text-center w-24">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-[#E8E1EC] text-[15px]">
+              <!-- Row 1: Highlighted as selected -->
+              <tr class="h-14 bg-[#EDE7FA]/50 hover:bg-[#EDE7FA]/70 transition">
+                <td class="py-3 px-4 text-center font-semibold text-[#2B2630]">1</td>
+                <td class="py-3 px-4 text-[#2B2630] font-medium whitespace-nowrap">18 Okt 2026</td>
+                <td class="py-3 px-4 text-[#6F6677] font-medium whitespace-nowrap">#PGD-001</td>
+                <td class="py-3 px-4 font-semibold text-[#2B2630] whitespace-nowrap">PT Mitra Pangan</td>
+                <td class="py-3 px-4 text-[#6F6677] whitespace-nowrap">gudang1</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#BFE8D6] text-[#2B2630]">
+                    Diterima
+                  </span>
+                </td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="px-3.5 py-1.5 rounded-[12px] border border-[#2B2630] text-[#2B2630] font-semibold text-xs hover:bg-white transition shadow-sm">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Row 2 -->
+              <tr class="h-14 hover:bg-[#EDE7FA]/20 transition">
+                <td class="py-3 px-4 text-center font-semibold text-[#2B2630]">2</td>
+                <td class="py-3 px-4 text-[#2B2630] font-medium whitespace-nowrap">18 Okt 2026</td>
+                <td class="py-3 px-4 text-[#6F6677] font-medium whitespace-nowrap">#PGD-002</td>
+                <td class="py-3 px-4 font-semibold text-[#2B2630] whitespace-nowrap">CV Berkah Jaya</td>
+                <td class="py-3 px-4 text-[#6F6677] whitespace-nowrap">gudang1</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#BFE8D6] text-[#2B2630]">
+                    Diterima
+                  </span>
+                </td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="px-3.5 py-1.5 rounded-[12px] border border-[#E8E1EC] text-[#2B2630] font-semibold text-xs hover:bg-[#EDE7FA] transition">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+
+              <!-- Row 3 -->
+              <tr class="h-14 hover:bg-[#EDE7FA]/20 transition">
+                <td class="py-3 px-4 text-center font-semibold text-[#2B2630]">3</td>
+                <td class="py-3 px-4 text-[#2B2630] font-medium whitespace-nowrap">18 Okt 2026</td>
+                <td class="py-3 px-4 text-[#6F6677] font-medium whitespace-nowrap">#PGD-003</td>
+                <td class="py-3 px-4 font-semibold text-[#2B2630] whitespace-nowrap">PT Sumber Rejeki</td>
+                <td class="py-3 px-4 text-[#6F6677] whitespace-nowrap">gudang1</td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#BFE8D6] text-[#2B2630]">
+                    Diterima
+                  </span>
+                </td>
+                <td class="py-3 px-4 text-center whitespace-nowrap">
+                  <button class="px-3.5 py-1.5 rounded-[12px] border border-[#E8E1EC] text-[#2B2630] font-semibold text-xs hover:bg-[#EDE7FA] transition">
+                    Detail
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Table Footer / Pagination -->
+          <div class="p-4 border-t border-[#E8E1EC] flex items-center justify-between text-xs text-[#6F6677]">
+            <span class="">Menampilkan 3 dari 3 penerimaan</span>
+            <div class="flex items-center gap-1.5">
+              <button class="w-8 h-8 rounded-lg border border-[#E8E1EC] flex items-center justify-center text-[#6F6677] hover:bg-[#EDE7FA]/40 transition" disabled="">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <button class="w-8 h-8 rounded-lg bg-[#EDE7FA] text-[#2B2630] font-bold text-xs flex items-center justify-center shadow-sm">
+                1
+              </button>
+              <button class="w-8 h-8 rounded-lg border border-[#E8E1EC] flex items-center justify-center text-[#6F6677] hover:bg-[#EDE7FA]/40 transition" disabled="">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detail Card Right (~370px wide) -->
+        <div class="w-[370px] shrink-0 bg-white border border-[#E8E1EC] rounded-[20px] p-6 shadow-[0_8px_24px_rgba(43,38,48,0.06)]">
+          <div class="flex items-center justify-between mb-1.5">
+            <h3 class="text-lg font-bold text-[#2B2630]">Detail Penerimaan #1</h3>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#BFE8D6] text-[#2B2630]">
+              Diterima
+            </span>
+          </div>
+          <p class="text-xs text-[#6F6677] mb-5">PT Mitra Pangan • 18 Okt 2026</p>
+
+          <!-- Small Table for Items -->
+          <div class="border border-[#E8E1EC] rounded-xl overflow-hidden mb-5">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-[#EDE7FA] text-[11px] font-bold text-[#2B2630] uppercase tracking-wider h-9">
+                  <th class="py-2 px-3">Barang</th>
+                  <th class="py-2 px-3 text-center">Jumlah</th>
+                  <th class="py-2 px-3 text-right">Harga</th>
+                  <th class="py-2 px-3 text-right">Sub Total</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#E8E1EC] text-xs">
+                <tr class="h-10 hover:bg-[#EDE7FA]/20">
+                  <td class="py-2.5 px-3 font-semibold text-[#2B2630]">Wafer Cokelat</td>
+                  <td class="py-2.5 px-3 text-center font-medium text-[#2B2630]">10</td>
+                  <td class="py-2.5 px-3 text-right text-[#6F6677]">Rp 2.500</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[#2B2630]">Rp 25.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Total Summary Line -->
+          <div class="pt-3 border-t border-[#E8E1EC] flex items-center justify-between text-sm">
+            <span class="font-bold text-[#2B2630]">Total</span>
+            <span class="text-base font-bold text-[#2B2630]">Rp 25.000</span>
+          </div>
+
+          <!-- Actions / Print Receipt button -->
+          <div class="mt-6 pt-4 border-t border-[#E8E1EC]">
+            <button class="w-full h-11 rounded-[14px] bg-[#EDE7FA] text-[#2B2630] font-semibold text-xs hover:bg-[#EDE7FA]/80 transition flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 text-[#2B2630]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+              </svg>
+              <span class="">Cetak Bukti Penerimaan</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+</body></html>

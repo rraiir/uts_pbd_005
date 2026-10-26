@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>StokKu - Kelola Retur</title>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Custom Tailwind Config for StokKu Design System -->
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            stokku: {
+              charcoal: '#2B2630',
+              muted: '#6F6677',
+              border: '#E8E1EC',
+              pink: '#D8A7B1',
+              lavender: '#EDE7FA',
+              mint: '#BFE8D6',
+              yellow: '#FBEFB5',
+              danger: '#B5516B'
+            }
+          },
+          boxShadow: {
+            card: '0 8px 24px rgba(43, 38, 48, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+<!-- BEGIN: Custom Styles -->
+<style data-purpose="base-styling">
+    body {
+      background-color: #FFFFFF;
+      color: #2B2630;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    /* Remove default appearance from select arrows to use custom SVG */
+    .custom-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232B2630' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-position: right 1rem center;
+      background-repeat: no-repeat;
+      background-size: 1.1em;
+    }
+  </style>
+<!-- END: Custom Styles -->
+</head>
+<body class="w-full max-w-[1280px] mx-auto min-h-screen bg-white relative text-stokku-charcoal antialiased flex flex-col overflow-x-hidden">
+<!-- Soft blurred decorative background circles -->
+<div aria-hidden="true" class="fixed top-12 right-24 w-96 h-96 rounded-full bg-[#EDE7FA]/40 blur-3xl pointer-events-none -z-10 overflow-hidden"></div>
+<div aria-hidden="true" class="fixed bottom-10 left-64 w-80 h-80 rounded-full bg-[#D8A7B1]/20 blur-3xl pointer-events-none -z-10"></div>
+<!-- BEGIN: TopBar -->
+<header class="h-[72px] w-full border-b border-stokku-border bg-white px-8 flex items-center justify-between z-20 flex-shrink-0">
+<!-- Brand Logo Area -->
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-xl bg-stokku-lavender flex items-center justify-center border border-stokku-border/60">
+<!-- Isometric Box SVG Icon -->
+<svg class="w-6 h-6 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+<polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+<line x1="12" x2="12" y1="22.08" y2="12"></line>
+</svg>
+</div>
+<span class="text-2xl font-bold tracking-tight text-stokku-charcoal">StokKu</span>
+</div>
+<!-- Right User Profile & Logout -->
+<div class="flex items-center space-x-3">
+<!-- User Profile Badge -->
+<div class="flex items-center space-x-2.5 px-4 py-2 border border-stokku-border rounded-full bg-white">
+<div class="w-6 h-6 rounded-full bg-stokku-lavender flex items-center justify-center">
+<svg class="w-3.5 h-3.5 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+<circle cx="12" cy="7" r="4"></circle>
+</svg>
+</div>
+<span class="text-sm font-medium text-stokku-charcoal">gudang1</span>
+</div>
+<!-- Outlined Logout Button -->
+<button class="flex items-center space-x-2 px-4 py-2 border border-stokku-border rounded-[14px] bg-white hover:bg-stokku-lavender/30 transition-colors flex-shrink-0" type="button">
+<svg class="w-4 h-4 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+<polyline points="16 17 21 12 16 7"></polyline>
+<line x1="21" x2="9" y1="12" y2="12"></line>
+</svg>
+<span class="text-sm font-medium text-stokku-charcoal">Keluar</span>
+</button>
+</div>
+</header>
+<!-- END: TopBar -->
+<div class="flex flex-1 w-full overflow-hidden">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-[260px] flex-shrink-0 border-r border-[#E8E1EC] bg-white flex flex-col p-4 z-10">
+<!-- Navigation Menu -->
+<nav aria-label="Sidebar Menu" class="space-y-1.5">
+<!-- Dashboard Item -->
+<a class="flex items-center space-x-3 px-4 h-12 rounded-[14px] text-stokku-muted hover:text-stokku-charcoal hover:bg-gray-50 transition-colors text-[15px] font-medium" href="#">
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<rect height="7" width="7" x="3" y="3"></rect>
+<rect height="7" width="7" x="14" y="3"></rect>
+<rect height="7" width="7" x="14" y="14"></rect>
+<rect height="7" width="7" x="3" y="14"></rect>
+</svg>
+<span>Dashboard</span>
+</a>
+<!-- Penerimaan Item -->
+<a class="flex items-center space-x-3 px-4 h-12 rounded-[14px] text-stokku-muted hover:text-stokku-charcoal hover:bg-gray-50 transition-colors text-[15px] font-medium" href="#">
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<polyline points="22 12 16 12 14 15 10 15 8 12 2 12"></polyline>
+<path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
+</svg>
+<span>Penerimaan</span>
+</a>
+<!-- Retur Item (ACTIVE) -->
+<a class="flex items-center space-x-3 px-4 h-12 rounded-[14px] bg-[#EDE7FA] text-stokku-charcoal font-bold text-[15px] transition-colors" href="#">
+<svg class="w-5 h-5 flex-shrink-0 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 2v6h6"></path>
+<path d="M3 13a9 9 0 1 0 3-7.7L3 8"></path>
+</svg>
+<span>Retur</span>
+</a>
+<!-- Kartu Stok Item -->
+<a class="flex items-center space-x-3 px-4 h-12 rounded-[14px] text-stokku-muted hover:text-stokku-charcoal hover:bg-gray-50 transition-colors text-[15px] font-medium" href="#">
+<svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewBox="0 0 24 24">
+<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+<polyline points="14 2 14 8 20 8"></polyline>
+<line x1="16" x2="8" y1="13" y2="13"></line>
+<line x1="16" x2="8" y1="17" y2="17"></line>
+<polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+<span>Kartu Stok</span>
+</a>
+</nav>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 overflow-y-auto px-8 py-6 w-full overflow-x-hidden">
+<div class="space-y-7 w-full">
+<!-- Page Title Row -->
+<section class="space-y-1.5" data-purpose="page-header">
+<h1 class="text-[44px] font-bold text-stokku-charcoal tracking-tight flex items-center gap-3">
+<span>Kelola</span>
+<span class="bg-[#D8A7B1] px-[14px] py-1 rounded-[10px] inline-block font-bold text-stokku-charcoal">Retur</span>
+</h1>
+<p class="text-[16px] text-stokku-muted font-normal">
+          Catat barang yang dikembalikan ke vendor.
+        </p>
+</section>
+<!-- Page Toolbar (Search, Count Pill, Primary Button) -->
+<section class="flex items-center justify-between gap-4" data-purpose="toolbar">
+<div class="flex items-center gap-4">
+<!-- Search Input -->
+<div class="relative w-80">
+<span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-stokku-muted">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+</svg>
+</span>
+<input class="w-full h-12 pl-11 pr-4 bg-white border border-stokku-border rounded-[14px] text-sm text-stokku-charcoal placeholder-stokku-muted focus:border-stokku-pink focus:ring-1 focus:ring-stokku-pink transition" placeholder="Cari ID..." type="text">
+</div>
+<!-- Total Counter Badge -->
+<div class="h-12 px-5 bg-[#EDE7FA] rounded-[14px] flex items-center justify-center">
+<span class="text-sm font-medium text-stokku-charcoal">Total: 1 Retur</span>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="h-12 px-6 bg-[#D8A7B1] hover:opacity-95 text-stokku-charcoal font-semibold text-sm rounded-[14px] flex items-center justify-center space-x-2 transition" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<line x1="12" x2="12" y1="5" y2="19"></line>
+<line x1="5" x2="19" y1="12" y2="12"></line>
+</svg>
+<span>Buat Retur</span>
+</button>
+</section>
+<!-- Two Columns Layout: Left Table Card (690px) + Right Form Card (370px), gap 24px = 1084px -->
+<div class="flex gap-6 items-start w-full">
+<!-- BEGIN: TableCard -->
+<section class="bg-white rounded-[20px] border border-stokku-border shadow-card p-6 flex-1 min-w-0" data-purpose="table-container">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#EDE7FA] text-stokku-charcoal text-[11px] font-bold uppercase tracking-wider rounded-xl">
+<th class="py-3 px-3 rounded-l-xl">ID</th>
+<th class="py-3 px-3">TANGGAL</th>
+<th class="py-3 px-3">BARANG</th>
+<th class="py-3 px-3 text-center">JUMLAH</th>
+<th class="py-3 px-3 rounded-r-xl">ALASAN</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-stokku-border/60 text-[14px]">
+<tr class="hover:bg-gray-50/50 transition">
+<td class="py-3.5 px-3 font-semibold text-stokku-charcoal whitespace-nowrap">
+                    1
+                  </td>
+<td class="py-3.5 px-3 text-stokku-charcoal whitespace-nowrap">
+                    18 Okt 2026
+                  </td>
+<td class="py-3.5 px-3 whitespace-nowrap">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-stokku-lavender flex items-center justify-center flex-shrink-0">
+<svg class="w-4 h-4 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<rect height="14" rx="2" ry="2" width="20" x="2" y="7"></rect>
+<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+</svg>
+</div>
+<span class="font-medium text-stokku-charcoal">Wafer Cokelat</span>
+</div>
+</td>
+<td class="py-3.5 px-3 text-center whitespace-nowrap">
+<span class="inline-block px-2.5 py-0.5 bg-stokku-lavender text-stokku-charcoal font-semibold text-xs rounded-lg">3</span>
+</td>
+<td class="py-3.5 px-3 text-stokku-charcoal font-normal whitespace-nowrap">
+                    Kemasan rusak
+                  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination -->
+<div class="mt-6 pt-4 border-t border-stokku-border flex items-center justify-between" data-purpose="table-footer">
+<span class="text-xs text-stokku-muted">Menampilkan 1 dari 1 retur</span>
+<div class="flex items-center space-x-1.5">
+<button class="w-8 h-8 rounded-lg border border-stokku-border flex items-center justify-center text-stokku-muted hover:bg-gray-50 disabled:opacity-40" disabled="" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<button class="w-8 h-8 rounded-lg bg-stokku-lavender font-semibold text-xs text-stokku-charcoal flex items-center justify-center" type="button">
+                1
+              </button>
+<button class="w-8 h-8 rounded-lg border border-stokku-border flex items-center justify-center text-stokku-muted hover:bg-gray-50 disabled:opacity-40" disabled="" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<polyline points="9 18 15 12 9 6"></polyline>
+</svg>
+</button>
+</div>
+</div>
+</section>
+<!-- END: TableCard -->
+<!-- BEGIN: FormCard -->
+<aside class="w-[330px] shrink-0 bg-white rounded-[20px] border border-stokku-border shadow-card p-6" data-purpose="form-container">
+<div class="flex items-center justify-between pb-4 border-b border-stokku-border">
+<h2 class="text-lg font-bold text-stokku-charcoal">Buat Retur</h2>
+<span class="text-xs font-semibold px-3 py-1 bg-[#EDE7FA] text-stokku-charcoal rounded-full">Mode Baru</span>
+</div>
+<div class="mt-4 p-3 bg-[#EDE7FA] rounded-xl flex items-center space-x-2.5 text-xs text-stokku-charcoal leading-snug">
+<svg class="w-4 h-4 text-stokku-charcoal flex-shrink-0" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="16" y2="12"></line>
+<line x1="12" x2="12.01" y1="8" y2="8"></line>
+</svg>
+<span class="">Tanggal diisi otomatis oleh sistem.</span>
+</div>
+<form action="#" class="mt-4 space-y-3.5" method="POST">
+<div class="space-y-1">
+<label class="block text-xs font-semibold text-stokku-charcoal" for="penerimaan-select">Penerimaan <span class="text-stokku-danger">*</span></label>
+<select class="custom-select w-full h-10 px-3.5 bg-white border border-stokku-border rounded-xl text-xs text-stokku-charcoal focus:border-stokku-pink focus:ring-1 focus:ring-stokku-pink appearance-none cursor-pointer" id="penerimaan-select">
+<option selected="">#1 - PT Mitra Pangan (18 Okt 2026)</option>
+<option>#2 - CV Berkah Jaya (18 Okt 2026)</option>
+<option>#3 - PT Sumber Rejeki (18 Okt 2026)</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-semibold text-stokku-charcoal" for="barang-select">Barang <span class="text-stokku-danger">*</span></label>
+<select class="custom-select w-full h-10 px-3.5 bg-white border border-stokku-border rounded-xl text-xs text-stokku-charcoal focus:border-stokku-pink focus:ring-1 focus:ring-stokku-pink appearance-none cursor-pointer" id="barang-select">
+<option selected="">Wafer Cokelat</option>
+<option>Biskuit Gandum</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="block text-xs font-semibold text-stokku-charcoal" for="jumlah-input">Jumlah <span class="text-stokku-danger">*</span></label>
+<input class="w-full h-10 px-3.5 bg-white border border-stokku-border rounded-xl text-xs text-stokku-charcoal placeholder-stokku-muted focus:border-stokku-pink focus:ring-1 focus:ring-stokku-pink" id="jumlah-input" placeholder="Contoh: 3" type="number" value="3">
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="block text-xs font-semibold text-stokku-charcoal" for="alasan-input">Alasan <span class="text-stokku-danger">*</span></label>
+<span class="text-[11px] text-stokku-muted">13/200</span>
+</div>
+<textarea class="w-full p-2.5 bg-white border border-stokku-border rounded-xl text-xs text-stokku-charcoal placeholder-stokku-muted focus:border-stokku-pink focus:ring-1 focus:ring-stokku-pink resize-none" id="alasan-input" placeholder="Alasan pengembalian barang..." rows="3">Kemasan rusak</textarea>
+</div>
+<div class="grid grid-cols-2 gap-3 pt-1.5">
+<button class="h-10 bg-[#D8A7B1] hover:opacity-95 text-stokku-charcoal font-semibold text-sm rounded-[14px] flex items-center justify-center space-x-2 transition" type="submit">
+<svg class="w-4 h-4 text-stokku-charcoal" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+<polyline points="17 21 17 13 7 13 7 21"></polyline>
+<polyline points="7 3 7 8 15 8"></polyline>
+</svg>
+<span class="">Simpan</span>
+</button>
+<button class="h-10 bg-[#EDE7FA] hover:bg-[#EDE7FA]/70 text-stokku-charcoal font-semibold text-sm rounded-[14px] flex items-center justify-center transition" type="button">
+Batal
+</button>
+</div>
+</form>
+</aside>
+<!-- END: FormCard -->
+</div>
+</div>
+</main>
+<!-- END: MainContent -->
+</div>
+
+
+</body></html>
