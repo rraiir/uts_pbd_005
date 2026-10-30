@@ -10,6 +10,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\MarginPenjualanController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\GudangController;
+use App\Http\Controllers\KasirController;
 
 // ===== Halaman Login (tanpa middleware) =====
 Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -35,6 +36,7 @@ Route::middleware(['cekrole:Manager'])->prefix('manager')->group(function () {
     Route::get('/dashboard', [ManagerController::class, 'dashboard'])->name('manager.dashboard');
     Route::get('/pengadaan', [ManagerController::class, 'pengadaan'])->name('manager.pengadaan');
     Route::get('/pengadaan/buat', [ManagerController::class, 'buatPengadaan'])->name('manager.pengadaan.buat');
+    Route::post('/pengadaan/buat', [ManagerController::class, 'simpanPengadaan'])->name('manager.pengadaan.simpan');
 });
 
 // ===== Route Gudang =====
@@ -42,6 +44,13 @@ Route::middleware(['cekrole:Gudang'])->prefix('gudang')->group(function () {
     Route::get('/dashboard', [GudangController::class, 'dashboard'])->name('gudang.dashboard');
     Route::get('/penerimaan', [GudangController::class, 'penerimaan'])->name('gudang.penerimaan');
     Route::get('/penerimaan/terima', [GudangController::class, 'terima'])->name('gudang.terima');
+    Route::post('/penerimaan/terima', [GudangController::class, 'simpanTerima'])->name('gudang.terima.simpan');
     Route::get('/retur', [GudangController::class, 'retur'])->name('gudang.retur');
     Route::get('/kartu-stok', [GudangController::class, 'kartuStok'])->name('gudang.kartu-stok');
+});
+
+// ===== Route Kasir (Transaksi Penjualan via Stored Procedure) =====
+Route::middleware(['cekrole:Kasir,Admin'])->prefix('kasir')->group(function () {
+    Route::get('/penjualan', [KasirController::class, 'index'])->name('kasir.penjualan');
+    Route::post('/penjualan', [KasirController::class, 'prosesPenjualan'])->name('kasir.penjualan.proses');
 });

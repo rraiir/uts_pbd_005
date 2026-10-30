@@ -44,9 +44,9 @@ class LoginController extends Controller
 
         $user = $users[0];
 
-        // Layar Kasir dan Supervisor belum dibuat (sesuai aturan)
-        if (in_array($user->nama_role, ['Kasir', 'Supervisor'])) {
-            return back()->with('error', 'Layar untuk role ' . $user->nama_role . ' belum tersedia.')->withInput();
+        // Layar Supervisor belum dibuat
+        if ($user->nama_role === 'Supervisor') {
+            return back()->with('error', 'Layar untuk role Supervisor belum tersedia.')->withInput();
         }
 
         // Simpan iduser, username, dan role ke session
@@ -71,6 +71,7 @@ class LoginController extends Controller
             'Admin'   => redirect('/admin/dashboard'),
             'Manager' => redirect('/manager/dashboard'),
             'Gudang'  => redirect('/gudang/dashboard'),
+            'Kasir'   => redirect('/kasir/penjualan'),
             default   => redirect('/login'),
         };
     }

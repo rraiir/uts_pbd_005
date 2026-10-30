@@ -162,6 +162,7 @@
                         ['url' => '/admin/user',      'icon' => 'group',                  'label' => 'User'],
                         ['url' => '/admin/role',      'icon' => 'admin_panel_settings',   'label' => 'Role'],
                         ['url' => '/admin/margin',    'icon' => 'percent',                'label' => 'Margin Penjualan'],
+                        ['url' => '/kasir/penjualan', 'icon' => 'point_of_sale',         'label' => 'Kasir Penjualan'],
                     ];
                 } elseif ($role === 'Manager') {
                     $menus = [
@@ -174,6 +175,10 @@
                         ['url' => '/gudang/penerimaan',  'icon' => 'assignment_turned_in', 'label' => 'Penerimaan'],
                         ['url' => '/gudang/retur',       'icon' => 'assignment_return',   'label' => 'Retur'],
                         ['url' => '/gudang/kartu-stok',  'icon' => 'receipt_long',        'label' => 'Kartu Stok'],
+                    ];
+                } elseif ($role === 'Kasir') {
+                    $menus = [
+                        ['url' => '/kasir/penjualan',    'icon' => 'point_of_sale',       'label' => 'Kasir Penjualan'],
                     ];
                 }
             @endphp

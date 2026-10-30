@@ -24,7 +24,8 @@
     </header>
 
     {{-- Two Column Grid --}}
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-12">
+    <form action="{{ route('manager.pengadaan.simpan') }}" method="POST" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start mb-12">
+        @csrf
         {{-- Left: Form & Order Items --}}
         <div class="lg:col-span-8 bg-white border border-[#E8E1EC] rounded-[20px] p-6 shadow-[0_8px_24px_rgba(43,38,48,0.06)] flex flex-col gap-6">
             {{-- Vendor Select --}}
@@ -32,7 +33,7 @@
                 <label class="font-body-small text-body-small font-semibold text-on-surface" for="vendor-select">
                     Vendor <span class="text-error">*</span>
                 </label>
-                <select class="w-full h-12 rounded-[12px] border border-[#E8E1EC] bg-white text-on-surface text-body-small font-medium px-4 outline-none focus:border-[#C9B8EC] focus:shadow-md transition-all cursor-pointer" id="vendor-select">
+                <select name="vendor_idvendor" required class="w-full h-12 rounded-[12px] border border-[#E8E1EC] bg-white text-on-surface text-body-small font-medium px-4 outline-none focus:border-[#C9B8EC] focus:shadow-md transition-all cursor-pointer" id="vendor-select">
                     <option value="">Pilih Vendor...</option>
                     @foreach ($vendors as $v)
                         <option value="{{ $v->idvendor }}">{{ $v->nama_vendor }}</option>
@@ -51,10 +52,6 @@
             {{-- Items Header --}}
             <div class="flex items-center justify-between">
                 <h2 class="text-lg font-semibold text-[#2B2630]">Daftar Barang Pesanan</h2>
-                <button class="bg-[#EDE7FA] hover:bg-[#C9B8EC]/50 text-[#2B2630] px-4 py-2 rounded-[12px] text-body-small font-semibold transition-colors inline-flex items-center gap-1.5 cursor-pointer" type="button">
-                    <span class="material-symbols-outlined text-[18px]">add</span>
-                    <span>Tambah Baris</span>
-                </button>
             </div>
 
             {{-- Items Table --}}
@@ -66,28 +63,26 @@
                             <th class="py-2 px-4 text-center w-28">Jumlah</th>
                             <th class="py-2 px-4 w-36">Harga Satuan</th>
                             <th class="py-2 px-4">Sub Total</th>
-                            <th class="py-2 px-4 text-center w-16">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-[#E8E1EC]">
                         <tr class="h-16 hover:bg-[#FAF7FE] transition-colors">
                             <td class="px-4 py-2">
-                                <select class="w-full h-10 text-body-small rounded-[8px] border-[#E8E1EC] text-on-surface bg-white outline-none">
+                                <select name="idbarang" id="pilih-barang" required class="w-full h-10 text-body-small rounded-[8px] border border-[#E8E1EC] text-on-surface bg-white outline-none px-2" onchange="updateHitungan()">
                                     <option value="">Pilih Barang...</option>
                                     @foreach ($barangs as $b)
-                                        <option value="{{ $b->idbarang }}">{{ $b->nama }} (Rp {{ number_format($b->harga, 0, ',', '.') }})</option>
+                                        <option value="{{ $b->idbarang }}" data-harga="{{ $b->harga }}">{{ $b->nama }}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td class="px-4 py-2">
-                                <input type="number" value="10" min="1" class="w-full h-10 text-center rounded-[8px] border border-[#E8E1EC] outline-none">
+                                <input type="number" name="jumlah" id="input-jumlah" value="10" min="1" required class="w-full h-10 text-center rounded-[8px] border border-[#E8E1EC] outline-none" oninput="updateHitungan()">
                             </td>
-                            <td class="px-4 py-2 font-medium">Rp 2.500</td>
-                            <td class="px-4 py-2 font-semibold">Rp 25.000</td>
-                            <td class="px-4 py-2 text-center">
-                                <button type="button" class="text-error hover:bg-error-container/30 p-1.5 rounded-[8px] transition-colors">
-                                    <span class="material-symbols-outlined text-[18px]">delete</span>
-                                </button>
+                            <td class="px-4 py-2">
+                                <input type="number" name="harga_satuan" id="input-harga" value="0" min="0" required class="w-full h-10 px-2 rounded-[8px] border border-[#E8E1EC] outline-none" oninput="updateHitungan()">
+                            </td>
+                            <td class="px-4 py-2 font-semibold text-on-surface" id="tampil-subtotal">
+                                Rp 0
                             </td>
                         </tr>
                     </tbody>
@@ -101,21 +96,21 @@
             <div class="flex flex-col gap-3 font-body-small text-body-small">
                 <div class="flex justify-between text-[#504446]">
                     <span>Subtotal</span>
-                    <span class="font-medium text-on-surface">Rp 25.000</span>
+                    <span class="font-medium text-on-surface" id="ringkasan-subtotal">Rp 0</span>
                 </div>
                 <div class="flex justify-between text-[#504446]">
                     <span>PPN (11%)</span>
-                    <span class="font-medium text-on-surface">Rp 2.750</span>
+                    <span class="font-medium text-on-surface" id="ringkasan-ppn">Rp 0</span>
                 </div>
                 <hr class="border-t border-[#E8E1EC]">
                 <div class="flex justify-between items-baseline pt-1">
                     <span class="font-semibold text-on-surface text-body">Total Pembayaran</span>
-                    <span class="font-bold text-xl text-primary">Rp 27.750</span>
+                    <span class="font-bold text-xl text-primary" id="ringkasan-total">Rp 0</span>
                 </div>
             </div>
 
             <div class="flex flex-col gap-2.5 pt-4">
-                <button type="button" class="h-12 w-full rounded-[14px] bg-primary-container text-on-surface font-card-title text-body-small font-semibold flex items-center justify-center gap-2 hover:opacity-95 shadow-sm active:scale-[0.98] transition-all cursor-pointer">
+                <button type="submit" class="h-12 w-full rounded-[14px] bg-primary-container text-on-surface font-card-title text-body-small font-semibold flex items-center justify-center gap-2 hover:opacity-95 shadow-sm active:scale-[0.98] transition-all cursor-pointer">
                     <span class="material-symbols-outlined text-[18px]">send</span>
                     <span>Simpan Pengadaan</span>
                 </button>
@@ -124,6 +119,33 @@
                 </a>
             </div>
         </div>
-    </div>
+    </form>
+
+    <script>
+    function updateHitungan() {
+        const select = document.getElementById('pilih-barang');
+        const opt = select.options[select.selectedIndex];
+        const inputHarga = document.getElementById('input-harga');
+        const inputJumlah = document.getElementById('input-jumlah');
+
+        // Jika harga masih 0 atau user baru ganti barang, set harga default modalnya
+        if (opt && opt.dataset.harga && (inputHarga.value == 0 || inputHarga.dataset.barangId != opt.value)) {
+            inputHarga.value = opt.dataset.harga;
+            inputHarga.dataset.barangId = opt.value;
+        }
+
+        const harga = parseFloat(inputHarga.value) || 0;
+        const jumlah = parseFloat(inputJumlah.value) || 0;
+        const subtotal = harga * jumlah;
+        const ppn = Math.round(subtotal * 0.11);
+        const total = subtotal + ppn;
+
+        const fmt = (num) => 'Rp ' + num.toLocaleString('id-ID');
+        document.getElementById('tampil-subtotal').innerText = fmt(subtotal);
+        document.getElementById('ringkasan-subtotal').innerText = fmt(subtotal);
+        document.getElementById('ringkasan-ppn').innerText = fmt(ppn);
+        document.getElementById('ringkasan-total').innerText = fmt(total);
+    }
+    </script>
 </div>
 @endsection

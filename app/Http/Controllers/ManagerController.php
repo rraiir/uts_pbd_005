@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class ManagerController extends Controller
@@ -54,5 +55,38 @@ class ManagerController extends Controller
             'vendors' => $vendors,
             'barangs' => $barangs,
         ]);
+    }
+
+    // simpan pengadaan baru ke vendor
+    public function simpanPengadaan(Request $request)
+    {
+        $request->validate([
+            'vendor_idvendor' => 'required',
+            'idbarang'        => 'required',
+            'jumlah'          => 'required|numeric|min:1',
+            'harga_satuan'    => 'required|numeric|min:0',
+        ]);
+
+        $subtotal = (int) $request->input('jumlah') * (int) $request->input('harga_satuan');
+        $ppn   = (int) round($subtotal * 0.11);
+        $total = $subtotal + $ppn;
+
+        // simpan header pengadaan
+        DB::insert(
+            'INSERT INTO pengadaan (user_iduser, status, vendor_idvendor, subtotal_nilai, ppn, total_nilai, timestamp) 
+             VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)',
+            [session('iduser', 4), 'P', $request->input('vendor_idvendor'), $subtotal, $ppn, $total]
+        );
+
+        $idPengadaan = DB::getPdo()->lastInsertId();
+
+        // simpan detail pengadaan
+        DB::insert(
+            'INSERT INTO detail_pengadaan (idpengadaan, idbarang, harga_satuan, jumlah, sub_total) 
+             VALUES (?, ?, ?, ?, ?)',
+            [$idPengadaan, $request->input('idbarang'), $request->input('harga_satuan'), $request->input('jumlah'), $subtotal]
+        );
+
+        return redirect()->route('manager.pengadaan')->with('sukses', 'Pesanan pengadaan #' . $idPengadaan . ' ke vendor berhasil dibuat!');
     }
 }

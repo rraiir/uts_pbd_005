@@ -41,7 +41,7 @@
                         <span>NAMA BARANG</span>
                     </div>
                     <div class="flex items-center gap-8 pr-2">
-                        <span class="text-right min-w-[90px]">Harga Satuan</span>
+                        <span class="text-right min-w-[140px]">Harga (Modal / Jual)</span>
                         <span class="text-center min-w-[70px]">Status</span>
                     </div>
                 </div>
@@ -62,7 +62,12 @@
                                     </div>
                                 </div>
                                 <div class="flex items-center gap-6">
-                                    <span class="font-semibold text-body-small text-on-surface text-right min-w-[90px]">Rp {{ number_format($row->harga, 0, ',', '.') }}</span>
+                                    <div class="flex flex-col text-right min-w-[140px]">
+                                        <span class="font-semibold text-body-small text-on-surface">Rp {{ number_format($row->harga, 0, ',', '.') }}</span>
+                                        <span class="font-caption text-caption text-tertiary font-semibold flex items-center justify-end gap-1">
+                                            <span class="material-symbols-outlined text-[13px]">sell</span> Jual: Rp {{ number_format($row->harga_jual, 0, ',', '.') }}
+                                        </span>
+                                    </div>
                                     <div class="min-w-[70px] flex justify-center">
                                         @if ($row->status == 1)
                                             <span class="inline-flex items-center px-3 h-6 rounded-full bg-tertiary-fixed text-on-surface font-badge text-badge font-semibold">Aktif</span>
